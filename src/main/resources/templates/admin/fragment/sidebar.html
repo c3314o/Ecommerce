@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html layout:decorator="layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+    <div th:fragment="sidebar" class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <span th:text="#{admin.items}"></span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#" th:text="#{admin.list}"></a></li>
+                        <li><a href="#" th:text="#{admin.categories}"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</html>
