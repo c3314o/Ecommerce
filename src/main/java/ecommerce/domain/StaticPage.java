@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import java.util.List;
 
 /**
+ * Static page.
+ *
  * @author Jakub Polák
  */
 @Data

@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
+ * Invoice.
+ *
  * @author Jakub Polák
  */
 @Data

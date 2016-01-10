@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
+ * Settings.
+ *
  * @author Jakub Polák
  */
 @Data

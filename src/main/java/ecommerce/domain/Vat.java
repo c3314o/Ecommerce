@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Vat.
+ *
  * @author Jakub Polák
  */
 @Data

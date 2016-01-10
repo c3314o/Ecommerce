@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Item category.
+ *
  * @author Jakub Polák
  */
 @Data

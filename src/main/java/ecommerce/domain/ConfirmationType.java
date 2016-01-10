@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import java.util.List;
 
 /**
+ * Confirmation type.
+ *
  * @author Jakub Polák
  */
 @Data

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
+ * Slug.
+ *
  * @author Jakub Polák
  */
 @Data

@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
+ * Seo.
+ *
  * @author Jakub Polák
  */
 @Data

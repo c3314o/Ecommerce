@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
+ * Confirmation.
+ *
  * @author Jakub Polák
  */
 @Data

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Menu type.
+ *
  * @author Jakub Polák
  */
 @Data

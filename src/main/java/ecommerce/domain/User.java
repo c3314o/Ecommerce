@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import java.util.List;
 
 /**
+ * User.
+ *
  * @author Jakub Polák
  */
 @Data

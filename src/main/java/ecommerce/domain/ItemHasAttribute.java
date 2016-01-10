@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
+ * Item has attribute.
+ *
  * @author Jakub Polák
  */
 @Data

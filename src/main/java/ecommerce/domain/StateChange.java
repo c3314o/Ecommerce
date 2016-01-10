@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
+ * State change of an customer order.
+ *
  * @author Jakub Polák
  */
 @Data

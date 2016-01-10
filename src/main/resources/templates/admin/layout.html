@@ -8,12 +8,12 @@
 
         <title th:text="#{admin.administration}"></title>
 
-        <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" />
-        <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
-        <link href="../bower_components/datatables-responsive/css/responsive.bootstrap.css" rel="stylesheet" />
-        <link href="../dist/css/sb-admin-2.css" rel="stylesheet" />
-        <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}" rel="stylesheet" />
+        <link th:href="@{/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css}" rel="stylesheet" />
+        <link th:href="@{/bower_components/datatables-responsive/css/responsive.bootstrap.css}" rel="stylesheet" />
+        <link th:href="@{/dist/css/sb-admin-2.css}" rel="stylesheet" />
+        <link th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
 
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -57,19 +57,16 @@
                         <h1 layout:fragment="header"></h1>
                     </div>
                 </div>
-                <div class="row" id="content">
-                    <div layout:fragment="content"></div>
-                    <span th:text="#{admin.administration}"></span>
-                </div>
+                <div layout:fragment="content" th:remove="tag"></div>
             </div>
         </div>
 
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-        <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-        <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-        <script src="../dist/js/sb-admin-2.js"></script>
+        <script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+        <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+        <script th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+        <script th:src="@{/bower_components/datatables/media/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js}"></script>
+        <script th:src="@{/dist/js/sb-admin-2.js}"></script>
     </body>
 </html>
 

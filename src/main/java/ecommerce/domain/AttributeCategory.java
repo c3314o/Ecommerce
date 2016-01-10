@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import java.util.List;
 
 /**
+ * Attribute category.
+ *
  * @author Jakub Polák
  */
 @Data

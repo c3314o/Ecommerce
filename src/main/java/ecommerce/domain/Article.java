@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Article.
+ *
  * @author Jakub Polák
  */
 @Data

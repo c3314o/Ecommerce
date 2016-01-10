@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
+ * Customer order.
+ *
  * @author Jakub Polák
  */
 @Data

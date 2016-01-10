@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Menu.
+ *
  * @author Jakub Polák
  */
 @Data

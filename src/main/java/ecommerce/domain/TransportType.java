@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 /**
+ * Transport type.
+ *
  * @author Jakub Polák
  */
 @Data
