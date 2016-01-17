@@ -12,8 +12,9 @@
         <link th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}" rel="stylesheet" />
         <link th:href="@{/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css}" rel="stylesheet" />
         <link th:href="@{/bower_components/datatables-responsive/css/responsive.bootstrap.css}" rel="stylesheet" />
-        <link th:href="@{/dist/css/sb-admin-2.css}" rel="stylesheet" />
         <link th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/admin/css/sb-admin-2.css}" rel="stylesheet" />
+        <link th:href="@{/admin/css/custom.css}" rel="stylesheet" />
 
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -57,6 +58,9 @@
                         <h1 layout:fragment="header"></h1>
                     </div>
                 </div>
+                <div th:if="${flashMessage != null}">
+                    <div th:class="${'alert alert-' + flashMessageType}" th:text="#{${flashMessage}}"></div>
+                </div>
                 <div layout:fragment="content" th:remove="tag"></div>
             </div>
         </div>
@@ -66,7 +70,7 @@
         <script th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
         <script th:src="@{/bower_components/datatables/media/js/jquery.dataTables.min.js}"></script>
         <script th:src="@{/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js}"></script>
-        <script th:src="@{/dist/js/sb-admin-2.js}"></script>
+        <script th:src="@{/admin/js/sb-admin-2.js}"></script>
     </body>
 </html>
 
