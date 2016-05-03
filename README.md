@@ -1,3 +1,3 @@
 # Ecommerce
 
-Ecommerce application built with Spring Boot.
+Ecommerce application built with Spring Boot and Maven.
