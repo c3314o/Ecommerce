@@ -24,7 +24,7 @@ import java.util.List;
 @ToString(exclude = {"vat", "seo", "itemCategory", "slugs", "attributes", "amountOnStocks", "images"})
 @Entity
 @Table(name = "ITEM")
-public class Item {
+public class Item extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
