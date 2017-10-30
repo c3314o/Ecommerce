@@ -5,3 +5,5 @@ ecommerce.iml
 mvnw
 mvnw.cmd
 bower_components/
+rebel.xml
+*.iml
