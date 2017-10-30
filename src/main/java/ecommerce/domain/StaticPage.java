@@ -9,9 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
 
 /**
  * Static page.
@@ -27,9 +25,6 @@ public class StaticPage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
-
-    @OneToMany(mappedBy = "staticPage")
-    private List<Slug> slugs;
 
     @Column(name = "HEADING", nullable = false)
     private String heading;

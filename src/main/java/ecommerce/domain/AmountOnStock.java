@@ -28,10 +28,6 @@ public class AmountOnStock {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "STOCK_ID", referencedColumnName = "ID", nullable = false)
-    private Stock stock;
-
-    @ManyToOne
     @JoinColumn(name = "ITEM_ID", referencedColumnName = "ID", nullable = false)
     private Item item;
 

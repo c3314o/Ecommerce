@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.List;
@@ -35,16 +34,9 @@ public class Item {
     @JoinColumn(name = "VAT_ID", referencedColumnName = "ID", nullable = false)
     private Vat vat;
 
-    @OneToOne
-    @JoinColumn(name = "SEO_ID")
-    private Seo seo;
-
     @ManyToOne
     @JoinColumn(name = "ITEM_CATEGORY_ID", referencedColumnName = "ID", nullable = false)
     private ItemCategory itemCategory;
-
-    @OneToMany(mappedBy = "item")
-    private List<Slug> slugs;
 
     @OneToMany(mappedBy = "item")
     private List<ItemHasAttribute> attributes;

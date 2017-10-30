@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,10 @@ import java.util.List;
 @ToString(exclude = {"itemCategory", "itemCategories", "seo"})
 @Entity
 @Table(name = "ITEM_CATEGORY")
-public class ItemCategory {
+public class ItemCategory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
     @ManyToOne
@@ -38,15 +37,8 @@ public class ItemCategory {
     @OneToMany(mappedBy = "itemCategory")
     private List<ItemCategory> itemCategories;
 
-    @OneToOne
-    @JoinColumn(name = "SEO_ID", referencedColumnName = "ID")
-    private Seo seo;
-
     @OneToMany(mappedBy = "itemCategory")
     private List<Item> items = new ArrayList<>();
-
-    @OneToMany(mappedBy = "itemCategory")
-    private List<Slug> slugs = new ArrayList<>();
 
     @Column(name = "NAME", nullable = false)
     private String name;

@@ -5,10 +5,10 @@
             <ul class="nav" id="side-menu">
                 <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> <span th:text="#{admin.dashboard}">Dashboard</span></a></li>
                 <li>
-                    <a href="#"><i class="fa fa-list fa-fw"></i> <span th:text="#{admin.items}"></span></a>
+                    <a th:attr="class=${#httpServletRequest.servletPath.contains('/admin/item/') ? 'active' : ''}" th:href="@{/admin/item/}"><i class="fa fa-list fa-fw"></i> <span th:text="#{admin.items}"></span></a>
                 </li>
                 <li>
-                    <a th:attr="class=${#httpServletRequest.servletPath.contains('/admin/item-category') ? 'active' : ''}" th:href="@{/admin/item-category/index}">
+                    <a th:attr="class=${#httpServletRequest.servletPath.contains('/admin/item-category/') ? 'active' : ''}" th:href="@{/admin/item-category}">
                         <i class="fa fa-list fa-fw"></i> <span th:text="#{admin.categories}"></span>
                     </a>
                 </li>
