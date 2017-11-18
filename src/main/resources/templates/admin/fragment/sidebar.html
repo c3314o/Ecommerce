@@ -8,7 +8,7 @@
                     <a th:attr="class=${#httpServletRequest.servletPath.contains('/admin/item/') ? 'active' : ''}" th:href="@{/admin/item/}"><i class="fa fa-list fa-fw"></i> <span th:text="#{admin.items}"></span></a>
                 </li>
                 <li>
-                    <a th:attr="class=${#httpServletRequest.servletPath.contains('/admin/item-category/') ? 'active' : ''}" th:href="@{/admin/item-category}">
+                    <a th:attr="class=${#httpServletRequest.servletPath.contains('/admin/item-category/') ? 'active' : ''}" th:href="@{/admin/item-category/}">
                         <i class="fa fa-list fa-fw"></i> <span th:text="#{admin.categories}"></span>
                     </a>
                 </li>

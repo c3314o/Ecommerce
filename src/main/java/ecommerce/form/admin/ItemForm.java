@@ -1,6 +1,7 @@
 package ecommerce.form.admin;
 
 import ecommerce.domain.Item;
+import ecommerce.domain.ItemCategory;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
@@ -34,8 +35,12 @@ public class ItemForm extends BaseForm<Item, ItemForm> {
 
     private Integer discountPercent = 0;
 
-    public ItemForm(Class<ItemForm> classForm, Class<Item> classEntity) {
-        super(classForm, classEntity);
+    private Iterable<ItemCategory> itemCategories;
+
+    private ItemCategory itemCategory;
+
+    public ItemForm() {
+        super(ItemForm.class, Item.class);
     }
 
     @Override
@@ -72,11 +77,11 @@ public class ItemForm extends BaseForm<Item, ItemForm> {
         this.position = position;
     }
 
-    public Boolean getActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setIsActive(Boolean active) {
         isActive = active;
     }
 
@@ -118,5 +123,21 @@ public class ItemForm extends BaseForm<Item, ItemForm> {
 
     public void setDiscountPercent(Integer discountPercent) {
         this.discountPercent = discountPercent;
+    }
+
+    public Iterable<ItemCategory> getItemCategories() {
+        return itemCategories;
+    }
+
+    public void setItemCategories(Iterable<ItemCategory> itemCategories) {
+        this.itemCategories = itemCategories;
+    }
+
+    public ItemCategory getItemCategory() {
+        return itemCategory;
+    }
+
+    public void setItemCategory(ItemCategory itemCategory) {
+        this.itemCategory = itemCategory;
     }
 }

@@ -28,13 +28,4 @@ public abstract class BaseForm<E extends BaseEntity, F extends BaseForm<E, F>> {
             throw new RuntimeException(e);
         }
     }
-
-    public F getNewForm() {
-        try {
-            return classForm.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            LOG.error("Could not create a new form.", e);
-            throw new RuntimeException(e);
-        }
-    }
 }

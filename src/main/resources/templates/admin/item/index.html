@@ -13,10 +13,9 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading" th:text="#{admin.item.list}"></div>
-                <!--
                 <div class="panel-body">
-                    <div th:if="${itemCategories.size() == 0}" th:text="#{admin.categories.list.empty}" class="alert alert-info"></div>
-                    <table th:if="${itemCategories.size() > 0}" class="table table-bordered table-striped">
+                    <div th:if="${items.size() == 0}" th:text="#{admin.items.list.empty}" class="alert alert-info"></div>
+                    <table th:if="${items.size() > 0}" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>&nbsp;</th>
@@ -28,19 +27,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="category : ${itemCategories}">
-                            <td th:text="${'#' + categoryStat.count}"></td>
-                            <td th:text="${category.name}"></td>
-                            <td th:text="${category.position}"></td>
-                            <td th:text="${category.isActive} ? #{admin.yes} : #{admin.no}"></td>
+                        <tr th:each="item : ${items}">
+                            <td th:text="${'#' + itemStat.count}"></td>
+                            <td th:text="${item.name}"></td>
+                            <td th:text="${item.position}"></td>
+                            <td th:text="${item.isActive} ? #{admin.yes} : #{admin.no}"></td>
                             <td>
-                                <a th:href="@{/admin/item-category/{id}/update(id = ${category.id})}">
+                                <a th:href="@{/admin/item/{id}/update(id = ${item.id})}">
                                     <i class="fa fa-pencil"></i>
                                     <span th:text="#{admin.edit}"></span>
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/admin/item-category/{id}/delete(id = ${category.id})}">
+                                <a th:href="@{/admin/item/{id}/delete(id = ${item.id})}">
                                     <i class="fa fa-trash-o"></i>
                                     <span th:text="#{admin.delete}"></span>
                                 </a>
@@ -49,7 +48,6 @@
                         </tbody>
                     </table>
                 </div>
-                -->
             </div>
         </div>
     </div>

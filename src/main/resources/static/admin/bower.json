@@ -33,7 +33,6 @@
   ],
   "devDependencies": {
     "pagedown-bootstrap": "https://github.com/kevinoconnor7/pagedown-bootstrap/archive/v1.1.zip",
-    "formwizard": "https://github.com/thecodemine/formwizard/archive/v3.0.7.zip",
     "jquery-mousewheel": "~3.1.12",
     "bootstrap-daterangepicker": "~1.3.17",
     "jquery.gritter": "~1.7.4",

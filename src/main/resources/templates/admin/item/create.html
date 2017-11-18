@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html layout:decorator="admin/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<h1 layout:fragment="header" class="page-header" th:text="#{admin.items}"></h1>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" th:text="#{admin.item.create}"></div>
+                <div class="panel-body">
+                    <div th:if="${error}" th:text="#{admin.item.could-not-be-saved}" class="alert alert-danger"></div>
+                    <form th:action="@{/admin/item/create}" th:object="${itemForm}" role="form" method="post">
+                        <div class="form-group">
+                            <label th:for="${#ids.next('name')}" th:text="#{admin.name}"></label>
+                            <input th:field="*{name}" class="form-control input-md" type="text" />
+                            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="help-inline"></p>
+                        </div>
+                        <div class="form-group">
+                            <select th:field="*{itemCategory}">
+                                <option th:each="category : ${itemForm.itemCategories}" th:value="${category.id}" th:text="${category.name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label th:for="${#ids.next('position')}" th:text="#{admin.position}"></label>
+                            <input th:field="*{position}" class="form-control input-md" type="text" />
+                            <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="help-inline"></p>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input th:field="*{isActive}" type="checkbox" /> <span th:text="#{admin.is-active}" th:remove="tag"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" th:text="#{admin.save}"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
