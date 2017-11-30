@@ -3,14 +3,14 @@ package ecommerce.controller.admin;
 import ecommerce.controller.admin.mapping.Mapping;
 import ecommerce.domain.BaseEntity;
 import ecommerce.form.admin.BaseForm;
-import ecommerce.service.CrudService;
+import ecommerce.service.CrudServiceForm;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,22 +23,23 @@ import javax.validation.Valid;
  */
 public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E, F>> {
     private static final Log LOG = LogFactory.getLog(CrudController.class);
-    static final String BASE_URL = "admin";
-    private static final String CREATE_URL = "create";
-    private static final String UPDATE_URL = "{id}/update";
-    private static final String DELETE_URL = "{id}/delete";
 
-    private final CrudService<E, F> crudService;
-    private final F form;
+    static final String BASE_URL = "/admin";
+
+    private static final String INDEX_URL = "/index";
+    private static final String CREATE_URL = "/create";
+    private static final String UPDATE_URL = "/{id}/update";
+    private static final String DELETE_URL = "/{id}/delete";
+
+    private final CrudServiceForm<E, F> crudService;
     private final Mapping mapping;
 
-    public CrudController(CrudService<E, F> crudService, F form, Mapping mapping) {
+    public CrudController(CrudServiceForm<E, F> crudService, Mapping mapping) {
         this.crudService = crudService;
-        this.form = form;
         this.mapping = mapping;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping(INDEX_URL)
     public ModelAndView index() {
         Iterable<E> entities = crudService.getAll();
         ModelAndView modelAndView = new ModelAndView("admin/" + mapping.getEntityNameInFileSystem() + "/index");
@@ -47,15 +48,15 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         return modelAndView;
     }
 
-    @RequestMapping(value = CREATE_URL, method = RequestMethod.GET)
+    @GetMapping(CREATE_URL)
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("admin/" + mapping.getEntityNameInFileSystem() + "/create");
-        modelAndView.addObject(mapping.getFormName(), form);
+        modelAndView.addObject(mapping.getFormName(), crudService.buildForm());
 
         return modelAndView;
     }
 
-    @RequestMapping(value = CREATE_URL, method = RequestMethod.POST)
+    @PostMapping(CREATE_URL)
     public ModelAndView create(
         @Valid F form,
         BindingResult bindingResult,
@@ -66,9 +67,11 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         if (bindingResult.hasErrors()) {
             modelAndView = new ModelAndView("admin/" + mapping.getEntityNameInFileSystem() + "/create");
             modelAndView.addObject("error", true);
+            modelAndView.addObject(mapping.getFormName(), crudService.buildForm(form));
         } else {
             try {
                 modelAndView = new ModelAndView("redirect:" + BASE_URL + '/' + mapping.getEntityNameInUrl());
+
                 redirectAttributes.addFlashAttribute("flashMessage", "admin." + mapping.getEntityKeyTranslation() + ".was-saved");
                 redirectAttributes.addFlashAttribute("flashMessageType", "success");
 
@@ -77,13 +80,14 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
                 LOG.error("Entity could not be saved.", e);
                 modelAndView = new ModelAndView("admin/" + mapping.getEntityNameInFileSystem() + "/create");
                 modelAndView.addObject("error", true);
+                modelAndView.addObject(mapping.getFormName(), crudService.buildForm(form));
             }
         }
 
         return modelAndView;
     }
 
-    @RequestMapping(value = UPDATE_URL, method = RequestMethod.GET)
+    @GetMapping(UPDATE_URL)
     public ModelAndView update(
         @PathVariable Long id,
         RedirectAttributes redirectAttributes
@@ -93,10 +97,11 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         if (entity == null) {
             redirectAttributes.addFlashAttribute("flashMessage", "admin." + mapping.getEntityKeyTranslation() + ".does-not-exist");
             redirectAttributes.addFlashAttribute("flashMessageType", "danger");
+
             return new ModelAndView("redirect:" + BASE_URL + '/' + mapping.getEntityNameInUrl());
         }
 
-        F form = this.form.getNewForm();
+        F form = crudService.buildForm();
 
         BeanUtils.copyProperties(entity, form);
 
@@ -106,7 +111,7 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         return modelAndView;
     }
 
-    @RequestMapping(value = UPDATE_URL, method = RequestMethod.POST)
+    @PostMapping(UPDATE_URL)
     public ModelAndView update(
         @PathVariable("id") Long id,
         @Valid F form,
@@ -118,6 +123,7 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         if (entity == null) {
             redirectAttributes.addFlashAttribute("flashMessage", "admin." + mapping.getEntityKeyTranslation() + ".does-not-exist");
             redirectAttributes.addFlashAttribute("flashMessageType", "danger");
+
             return new ModelAndView("redirect:" + BASE_URL + '/' + mapping.getEntityNameInUrl());
         }
 
@@ -129,7 +135,7 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         } else {
             try {
                 crudService.save(form);
-                modelAndView = new ModelAndView("redirect:" + BASE_URL);
+                modelAndView = new ModelAndView("redirect:" + "/admin/" + mapping.getEntityNameInUrl() + "/");
                 redirectAttributes.addFlashAttribute("flashMessage", "admin." + mapping.getEntityKeyTranslation() + ".was-saved");
                 redirectAttributes.addFlashAttribute("flashMessageType", "success");
             } catch (RuntimeException e) {
@@ -142,7 +148,7 @@ public abstract class CrudController<E extends BaseEntity, F extends BaseForm<E,
         return modelAndView;
     }
 
-    @RequestMapping(value = DELETE_URL, method = RequestMethod.GET)
+    @GetMapping(DELETE_URL)
     public ModelAndView delete(
         @PathVariable("id") Long id,
         RedirectAttributes redirectAttributes

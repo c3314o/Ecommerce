@@ -3,7 +3,7 @@ package ecommerce.controller.admin;
 import ecommerce.controller.admin.mapping.Mapping;
 import ecommerce.domain.ItemCategory;
 import ecommerce.form.admin.ItemCategoryForm;
-import ecommerce.service.CrudService;
+import ecommerce.service.ItemCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ItemCategoryController extends CrudController<ItemCategory, ItemCategoryForm> {
 
     @Autowired
-    public ItemCategoryController(CrudService<ItemCategory, ItemCategoryForm> service) {
-        super(service, new ItemCategoryForm(ItemCategoryForm.class, ItemCategory.class), Mapping.ITEM_CATEGORY);
+    public ItemCategoryController(ItemCategoryService itemCategoryService) {
+        super(itemCategoryService, Mapping.ITEM_CATEGORY);
     }
 }

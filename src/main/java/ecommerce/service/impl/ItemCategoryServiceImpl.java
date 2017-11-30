@@ -13,10 +13,11 @@ import org.springframework.stereotype.Service;
  * @author Jakub Polák
  */
 @Service("itemCategoryService")
-public class ItemCategoryServiceImpl extends CrudServiceImpl<ItemCategory, ItemCategoryForm> implements ItemCategoryService {
+public class ItemCategoryServiceImpl extends CrudServiceFormImpl<ItemCategory, ItemCategoryForm>
+    implements ItemCategoryService {
 
     @Autowired
     public ItemCategoryServiceImpl(ItemCategoryRepository itemCategoryRepository) {
-        super(itemCategoryRepository);
+        super(itemCategoryRepository, ItemCategoryForm.class);
     }
 }

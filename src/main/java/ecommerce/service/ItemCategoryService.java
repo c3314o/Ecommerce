@@ -8,6 +8,6 @@ import ecommerce.form.admin.ItemCategoryForm;
  *
  * @author Jakub Polák
  */
-public interface ItemCategoryService extends CrudService<ItemCategory, ItemCategoryForm> {
+public interface ItemCategoryService extends CrudServiceForm<ItemCategory, ItemCategoryForm> {
 
 }
