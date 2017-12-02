@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,9 +31,6 @@ public class CustomerOrder {
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @OneToOne(mappedBy = "customerOrder")
-    private Invoice invoice;
 
     @Column(name = "CODE", length = 255, unique = true, nullable = false)
     private String code;

@@ -21,7 +21,8 @@ public class ItemForm extends BaseForm<Item, ItemForm> {
 
     private String description;
 
-    private Integer position;
+    @NotNull
+    private Integer position = 0;
 
     private Boolean isActive = Boolean.FALSE;
 
